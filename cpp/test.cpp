@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <map>
+#include <ctime>
 
 // 0.4 namespace, to define variables and use repeated names
 
@@ -108,7 +109,8 @@ int main() {
     */
 
     // 0.7 string methods (incl in iostream)
-    std::string yourName;
+
+    /* std::string yourName;
     std::cout << "What is your name, with no spaces?\n";
     std::getline(std::cin, yourName);
 
@@ -119,11 +121,39 @@ int main() {
         std::string yourEmail = yourName.insert(0, "2019").append("@gmail.com");
         std::cout << yourEmail << " is your email address!\n";
     }
+    */
 
+    // 0.8 loops
+    // 0.8.1 do-while loops
 
+    /*
+    int num;
+    int guess;
+    int tries = 0;
 
+    srand(time(NULL));
+    num = (rand() % 100) + 1;
+    std::cout << "**************************************\n";
 
+    do {
+        std::cout << "Enter your guess: ";
+        std::cin >> guess;
+        tries++;
 
+        if (guess > num) {
+            std::cout << "Too big, try again!\n";
+        }
+        else if (guess < num) {
+            std::cout << "Too small, try again!\n";
+        }
+        else {
+            std::cout << "Bingo!\n";
+        }
+    } while (guess != num);
+
+    std::cout << "Number of tries: " << tries << "\n";
+    std::cout << "**************************************\n";
+    */
 
     return 0;
 }
