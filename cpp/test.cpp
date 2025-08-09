@@ -3,6 +3,36 @@
 #include <map>
 #include <ctime>
 
+void swap(std::string &x, std::string &y) {
+    std::string temp;
+    temp = x;
+    x = y;
+    y = temp;
+}
+
+int findIndex(std::string array[], int size, std::string target) {
+        for (int i = 0; i < size; i++) {
+            if (array[i] == target) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+int bubbleSort(int array[], int size) {
+    int temp;
+    int status = 0;
+    for (int i = 0; i < size - 1; i++) {
+        if (array[i] > array[i + 1]) {
+            temp = array[i];
+            array[i] = array[i + 1];
+            array[i + 1] = temp;
+            status = 1;
+        }
+    }
+    return status;
+}
+
 // 0.4 namespace, to define variables and use repeated names
 
 namespace earth {
@@ -153,7 +183,74 @@ int main() {
 
     std::cout << "Number of tries: " << tries << "\n";
     std::cout << "**************************************\n";
+
+    // 0.9 arrays and looping through the array
+    std::string weapons[] = {"Tanks", "Planes", "Guns"};
+
+    for (int i = 0; i < sizeof(weapons)/sizeof(std::string); i++) {
+        std::cout << weapons[i] << "\n";
+    }
+
+    for (std::string weapon : weapons) {
+        std::cout << weapon << "\n";
+    }
+
+    ## when arrays are passed to functions, what gets passed is only a pointer to the array
+    ## as such the function have no info regarding the array itself, pass size as a seperate argument.
+    
+    # 0.9.1 searching for an element of an array, linear search
+
+    int size = sizeof(weapons) / sizeof(std::string);
+
+    int idx = findIndex(weapons, size, "Guns");
+    std::cout << idx;
+
+    # 0.9.1 searching for an element of an array, linear search
+
+    int array[] = {1,2,3,4,6,7,5,8,0,9};
+    int size = sizeof(array) / sizeof(int);
+    int status = 0;
+    int cycles = 0;
+
+    do {
+        status = bubbleSort(array, size);
+        cycles++;
+    } while (status);
+
+    for (int i : array) {
+        std::cout << i << ' ';
+    }
+    std::cout << '\n' << "Ths operations took " << cycles << " cycles, for an array of " << size << " integers."; 
+
+    # 0.10 multidimensional arrays
+
+    std::string cars[][3] = {
+        {"car1", "car2", "car3"},
+        {"car4", "car5", "car6"},
+        {"car7", "car8", "car9"}
+    };
+
+    for (int i = 0; i < sizeof(cars)/sizeof(cars[0]); i++) {
+        for (int j = 0; j < sizeof(cars[0])/sizeof(std::string); j++) {
+            std::cout << cars[i][j] << " ";
+        }
+        std::cout << "\n";
+    }
+
+    // 1.0 address, pointers
+    std::cout << &name << "\n";
+    std::cout << &age << "\n";
+
+    // passing address vs passing value into function
+    // inputs to functions are copies of the original values,
+    // as such, in order to switch the values in place, we pass in the addresses by adding & in function args
+    // doing so will switch the addresses, which then swaps the values.
+    std::string new_x = "X";
+    std::string new_y = "Y";
+    swap(new_x, new_y);
+
+    std::cout << new_x << " and " << new_y;
     */
 
-    return 0;
+   return 0;
 }
