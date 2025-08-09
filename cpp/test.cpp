@@ -70,7 +70,7 @@ int main() {
     double largeNumber = 9000000000000000000;
     char dollarSign = '$';
     bool power = true;
-    std::string name;
+    std::string name = "bro";
     text_t firstName = "Bro";
 
     /* 
@@ -237,7 +237,7 @@ int main() {
         std::cout << "\n";
     }
 
-    // 1.0 address, pointers
+    // 1.0 address
     std::cout << &name << "\n";
     std::cout << &age << "\n";
 
@@ -250,7 +250,22 @@ int main() {
     swap(new_x, new_y);
 
     std::cout << new_x << " and " << new_y;
-    */
 
+    // 1.1 pointers
+
+    std::string pizzas[5] = {"pizza1", "pizza2", "pizza3", "pizza4", "pizza5"};
+    std::string *pName = &name; // assigns pointer to the address of the string
+    std::string *pPizzas = pizzas; // a variable array is already a pointer
+ 
+    std::cout << *pName << "\n"; // pointer to string, gives the string
+    std::cout << *pPizzas << "\n"; // accessing a pointer to array gives the first element of the array
+    std::cout << pizzas << "\n";  // array is already a pointer, with the address.
+
+    // 1.1.1 null pointers
+    int *pointer = nullptr;
+    int x = 123;
+
+    *pointer = &x; // error if trying to reference a nullptr
+    */
    return 0;
 }
