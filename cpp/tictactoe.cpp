@@ -18,7 +18,7 @@ class Game {
             gameBoard[2] = {' ', ' ', ' '};
         }
         void showBoard() {
-            std::cout << "********************************\n";
+            std::cout << "***********\n";
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
                     std::cout << " " << gameBoard[i][j] << " ";
@@ -37,11 +37,11 @@ class Game {
                     std::cout << "-----------\n";
                 }
             }
-            std::cout << "********************************\n"; 
+            std::cout << "***********\n"; 
         }
 
         void showSampleBoard() {
-            std::cout << "********************************\n";
+            std::cout << "**************\n";
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
                     std::cout << " " << sampleBoard[i][j] << " ";
@@ -60,7 +60,7 @@ class Game {
                     std::cout << "-------------\n";
                 }
             }
-            std::cout << "********************************\n"; 
+            std::cout << "**************\n"; 
         }
 
         int checkRows() {
@@ -124,11 +124,11 @@ class Game {
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
                     if (gameBoard[i][j] == ' ') {
-                        return -5;
+                        return 0;
                     }
                 }
             }
-            return 0;
+            return -5;
         }
 
         void playX() {
@@ -188,6 +188,7 @@ int main() {
         }
         ttt.showBoard();
         status = ttt.checkCols() + ttt.checkDiags() + ttt.checkRows() + ttt.checkDraw();
+        round++;
     }
     
     switch(status) {
