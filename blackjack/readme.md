@@ -53,17 +53,13 @@ Elementary rules of a simple blackjack game:
 
 Structure, from small to big:
 
-1. Cards:
-    1.1 class Card:
-        - is_ace()
+1.1 class Deck:
+    - cards
 
-    1.2 class Deck:
-        - cards
+    - draw()
+    - reset()
 
-        - draw()
-        - reset()
-
-    1.3 class Shoe: (the shoe can be multiple decks)
+    1.2 class Shoe: (the shoe can be multiple decks)
         - n_decks
         - cards
 
@@ -73,6 +69,7 @@ Structure, from small to big:
 2. Players:
     2.1 class Hand:
         - cards_in_hand (all we need to store is this, all other info is derived.)
+        - is_split
 
         - total()
         - add_card()
@@ -87,41 +84,41 @@ Structure, from small to big:
 
     2.2 class Bet:
         - bet_amount
+        - insurance
 
         - double_down()
         - is_doubled()
-        - 
+        - surrender()
+        - add_insurance()
 
     2.3 class Player:
+        - hands (if split then have multiple hands)
+        - bets (if split then have multiple bets)
+        - bankroll
+
+        - placebet()
+        - buy_insurance()
+        - new_card()
+        - decide_action
+        - settle (money)
 
     2.4 class Dealer:
+        - hand
+
+        - peak_for_blackjack
+        - play() (deal)
+        - up_card()
 
 3. Game:
 
     3.1 class Game:
-
-
-
-
-1. class Shoe:
-    - card_deck
-
-    methods: 
-    - new_deck (fresh deck)
-    - draw (random card and remove from deck
-
-2. class Game:
-    - dealer
-    - player
-    - bet
-    - insurance
-    - 
-
-    methods:
-    - distribute_cards (initialize game)
-
-3. class player:
-    - bet
-    - hand
-    - n_hands
-
+        - shoe
+        - player
+        - dealer
+        
+        - start_round()
+        - resolve_insurance()
+        - player_turn()
+        - dealer_turn()
+        - settle_bet
+        - handle_split()
