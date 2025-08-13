@@ -93,7 +93,8 @@ class Dealer(Cardhandler):
 class Player(Cardhandler):
     def __init__(self):
         super().__init__()
-        self._is_doubled = False
+        self._can_double = False
+        self._can_insurance = False
         self.bank = 0
     
     def is_doubled(self):
@@ -116,9 +117,20 @@ class Player(Cardhandler):
     def is_doubled(self):
         return self._is_doubled
     
-    def double_down():
-        self._is_doubled_ = True
+    def can_double_down(self):
+        self._can_double = True
 
+    def can_insurance(self):
+        self._can_insurance = True
+
+class Game():
+    def __init__(self, shoe, player, dealer):
+        self.shoe = shoe
+        self.player = player
+        self.dealer = dealer
+        self.bet = 1
+        self._is_doubled = False
+        self._can_insurance = False
 
 
 
