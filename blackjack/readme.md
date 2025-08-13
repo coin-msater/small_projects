@@ -96,11 +96,11 @@ Structure, from small to big:
         - bets (if split then have multiple bets)
         - bankroll
 
-        - placebet()
-        - buy_insurance()
-        - new_card()
-        - decide_action
-        - settle (money)
+        - placebet() Bet
+        - buy_insurance() Bet
+        - new_card() card from Shoe
+        - settle (money) Bet
+        - split
 
     2.4 class Dealer:
         - hand
